@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>商品一覧</h1>
+<h1 class="h3 mb-4">商品一覧</h1>
 
 <table class="table table-bordered table-hover align-middle">
     <tr>
