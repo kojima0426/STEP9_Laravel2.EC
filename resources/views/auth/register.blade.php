@@ -12,21 +12,23 @@
         <!-- 名前（漢字） -->
     <div class="mt-4">
     <x-input-label for="last_name" value="名前（漢字）" />
-    <x-text-input id="last_name"
+    <x-text-input id="name_kanji"
         class="block mt-1 w-full"
         type="text"
-        name="last_name"
-        :value="old('last_name')" />
+        name="name_kanji"
+        :value="old('name_kanji')" />
+    <x-input-error :messages="$errors->get('name_kanji')" class="mt-2" />
     </div>
 
     <!-- 名前（カナ） -->
     <div class="mt-4">
     <x-input-label for="first_name" value="名前（カナ）" />
-    <x-text-input id="first_name"
+    <x-text-input id="name_kana"
         class="block mt-1 w-full"
         type="text"
-        name="first_name"
-        :value="old('first_name')" />
+        name="name_kana"
+        :value="old('name_kana')" />
+    <x-input-error :messages="$errors->get('name_kana')" class="mt-2" />
     </div>
 
 

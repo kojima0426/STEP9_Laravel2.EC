@@ -21,7 +21,7 @@
             <td>{{ $product->description }}</td>
             <td> <img src="{{ asset($product->img_path) }}" width="80"></td>
             <td>{{ $product->price }}</td>
-            <td><button class="btn btn-success btn-sm">詳細</button></td>
+            <td> <a href="{{ route('products.show', $product->id) }}" class="btn btn-success btn-sm">詳細</a></td>
         </tr>
     @endforeach
 </table>

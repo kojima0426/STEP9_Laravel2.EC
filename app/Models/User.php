@@ -9,13 +9,17 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Like;
 
-#[Fillable(['last_name',
-    'first_name',
+    #[Fillable([
     'name',
+    'name_kanji',
+    'name_kana',
     'email',
-    'password'])]
+    'password',
+])]
 #[Hidden(['password', 'remember_token'])]
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -33,4 +37,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function likes()
+{
+    return $this->hasMany(Like::class);
+}
 }

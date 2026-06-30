@@ -22,7 +22,6 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-
     /**
      * Handle an incoming registration request.
      *
@@ -31,25 +30,22 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-        'last_name' => ['required', 'string', 'max:255'],
-        'first_name' => ['required', 'string', 'max:255'],
         'name' => ['required', 'string', 'max:255'],
+        'name_kanji' => ['required', 'string', 'max:255'],
+        'name_kana' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
 
         $user = User::create([
-        'last_name' => $request->last_name,
-        'first_name' => $request->first_name,
         'name' => $request->name,
+        'name_kanji' => $request->name_kanji,
+        'name_kana' => $request->name_kana,
         'email' => $request->email,
         'password' => Hash::make($request->password),
     ]);
-
         event(new Registered($user));
-
         Auth::login($user);
-
         return redirect(route('dashboard', absolute: false));
     }
 }
