@@ -8,6 +8,12 @@ Route::get('/', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products', [ProductController::class, 'index']) ->name('products.index');
 
+Route::get('/products/{product}/purchase', [ProductController::class, 'purchase'])
+    ->name('products.purchase');
+
+Route::post('/products/{product}/purchase', [ProductController::class, 'purchaseStore'])
+    ->name('products.purchase.store');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

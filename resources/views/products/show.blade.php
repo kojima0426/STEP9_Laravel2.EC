@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h1>商品詳細</h1>
+    <h1 style="font-size: 80px;" class="mb-5" >商品詳細</h1>
 
-    <p>商品名：{{ $product->product_name }}</p>
-    <p>説明：{{ $product->description }}</p>
+    <p style="font-size: 20px;">商品名：{{ $product->product_name }}</p>
+    <p style="font-size: 20px;">説明：{{ $product->description }}</p>
     <p>画像：<img src="{{ asset($product->img_path) }}" width="100"></p>
     <p>金額：{{ $product->price }}</p>
     <p>会社ID：{{ $product->company_id }}</p>
@@ -20,7 +20,8 @@
 
     <span id="like-count">{{ $product->likes()->count() }}</span>
 </div>
-    <button class="btn btn-primary ">カードに追加する</button>
+    <a href="{{ route('products.purchase', $product) }}" class="btn btn-primary">
+    カートに追加する</a>
     <a href="{{ route('products.index') }}" class="btn btn-secondary">戻る</a>
 </div>
 <script src="{{ asset('js/like.js') }}"></script>

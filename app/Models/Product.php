@@ -28,4 +28,5 @@ class Product extends Model
         ->where('user_id', $user->id)
         ->exists();
     }
+
 }
