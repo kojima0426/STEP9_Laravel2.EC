@@ -3,9 +3,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MyPageController;
 
 Route::get('/', [ProductController::class, 'index']);
 // 商品登録画面を開く
+
+//マイページを開く
+Route::get('/mypage',[MyPageController::class, 'index'])->middleware('auth')->name('mypage');
+
 Route::get('/products/create', [ProductController::class, 'create']) ->name('products.create');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products', [ProductController::class, 'index']) ->name('products.index');

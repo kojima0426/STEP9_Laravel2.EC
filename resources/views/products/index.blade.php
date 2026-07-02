@@ -11,7 +11,7 @@
         <th>商品説明</th>
         <th>画像</th>
         <th>料金(¥)</th>
-        <th>詳細</th>
+        <th></th>
     </tr>
 
     @foreach ($products as $product)
