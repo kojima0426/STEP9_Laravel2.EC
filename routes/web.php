@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
 
 Route::get('/', [ProductController::class, 'index']);
+// 商品登録画面を開く
+Route::get('/products/create', [ProductController::class, 'create']) ->name('products.create');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/products', [ProductController::class, 'index']) ->name('products.index');
 
@@ -15,7 +17,7 @@ Route::post('/products/{product}/purchase', [ProductController::class, 'purchase
     ->name('products.purchase.store');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('products.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -31,3 +33,11 @@ Route::delete('/products/{product}/like', [LikeController::class, 'unlikeProduct
     ->name('products.unlike');
 
 require __DIR__.'/auth.php';
+
+// 商品登録画面を開く
+Route::get('/products/create', [ProductController::class, 'create'])
+    ->name('products.create');
+
+// 商品を登録
+Route::post('/products', [ProductController::class, 'store'])
+    ->name('products.store');
